@@ -15,6 +15,7 @@
 \title{Facial Analysis of Patient Affected by Osteogenesis
 Imperfecta Using Computer Vision}
 
+
 \author{
 Rousseau, Maxime\\
 \texttt{maxime.rousseau2@mail.mcgill.ca}
@@ -30,8 +31,11 @@ Vargas, Javier\\
 }
 
 \begin{document}
+
 \maketitle
 \begin{multicols}{2}
+
+
 \section{Abstract}
 
 Individuals affected by Osteogenesis Imperfecta (OI), an autosomal
@@ -204,11 +208,10 @@ other analyses are summarized in Table 1.
 \begin{table*}
 \begin{center}
 \resizebox{\linewidth}{!}{
-\begin{tabular}{|c||c|c|c|c|c|}
-\hline
+\begin{tabular}{lrrrrr}
+\toprule[\heavyrulewidth]\toprule[\heavyrulewidth]
  & Control & OI Type I & OI Type III & OI Type IV & P-Value\\
-\hline
-\hline
+\midrule
 	N (M/F) & $133 (68/65)$ & $88 (42/46)$ & $28 (9/19)$ & $57 (26/31)$ &
 	P(Chi-Squared) = $0.32$\\
 	Age (years) & $17.7 (7.7)$ & $19.7 (14)$ & $15.4 (8.4)$ & $17.1 (8.4)$ & P(ANOVA) =
@@ -233,7 +236,7 @@ other analyses are summarized in Table 1.
 	P(ANOVA) = $0.47$ \\
 	LFH Z-Score & $0.0185 (0.871)$ & $0.0818 (1.02)$ & $-0.253 (1.407)$ &
 	$-0.045 (1.021)$ & P(ANOVA) = $0.47$\\
-\hline
+\bottomrule[\heavyrulewidth]
 \end{tabular}}
 \captionof{table}{Results from the Measurements and Statistical
 Testing. a: $p<0.05$ in comparison to OI-I b: $p<0.05$ in comparison to OI-III
@@ -246,24 +249,23 @@ We can see the confusion matrices of the models in figure 5.
 
 \begin{center}
 \resizebox{\linewidth}{!}{
-\begin{tabular}{|l|r|r|r|r|r|}
-\hline
+\begin{tabular}{lrrrrr}
+\toprule[\heavyrulewidth]\toprule[\heavyrulewidth]
 	Model & Class & Precision & Recall & F1-Score & Support\\
-\hline
-\hline
+\midrule
 	OIM0 & Control & 1.00 & 1.00 & 1.00 & 27 \\
 		 & OI Type 1 + 4 & 0.97 & 1.00 & 0.98 & 29 \\
 		 & OI Type 3 & 1.00 & 0.80 & 0.89 & 5 \\
 		 & Total & 0.98 & 0.98 & 0.98 & 61 \\
-\hline
+\midrule
 	OIB0 & Control & 1.00 & 1.00 & 1.00 & 26 \\
 		 & OI Type 1 & 1.00 & 1.00 & 1.00 & 18 \\
 		 & Total & 1.00 & 1.00 & 1.00 & 44 \\
-\hline
+\midrule
 	OIB1 & Control & 1.00 & 1.00 & 1.00 & 25 \\
 		 & OI Subject & 1.00 & 1.00 & 1.00 & 36 \\
 		 & Total & 1.00 & 1.00 & 1.00 & 61 \\
-\hline
+\bottomrule[\heavyrulewidth]
 \end{tabular}}
 \captionof{table}{Accuracy Metrics from the Classifiers Test Set}
 \end{center}
