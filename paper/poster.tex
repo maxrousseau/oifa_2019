@@ -1,0 +1,306 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% a0poster Landscape Poster
+% LaTeX Template
+% Version 1.0 (22/06/13)
+%
+% The a0poster class was created by:
+% Gerlinde Kettl and Matthias Weiser (tex@kettl.de)
+% 
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[a0,portrait]{a0poster}
+
+\usepackage{titlesec}
+\usepackage{multicol} % This is so we can have multiple columns of text side-by-side
+\columnsep=100pt % This is the amount of white space between the columns in the poster
+\columnseprule=3pt % This is the thickness of the black line between the columns in the poster
+
+\usepackage[svgnames]{xcolor} % Specify colors by their 'svgnames', for a full list of all colors available see here: http://www.latextemplates.com/svgnames-colors
+
+\usepackage{times} % Use the times font
+%\usepackage{palatino} % Uncomment to use the Palatino font
+
+\usepackage{graphicx} % Required for including images
+\graphicspath{{figures/}} % Location of the graphics files
+
+\usepackage{booktabs} % Top and bottom rules for table
+\usepackage{enumerate}
+\usepackage[backend=biber, bibencoding=utf8]{biblatex}
+\usepackage[font=small,labelfont=bf]{caption} % Required for specifying captions to tables and figures
+
+\usepackage{amsfonts, amsmath, amsthm, amssymb} % For math fonts, symbols and environments
+\usepackage{wrapfig} % Allows wrapping text around tables and figures
+\addbibresource{~/Documents/work/oi_facial_deformities_research/oirefs.bib}
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	POSTER HEADER 
+%----------------------------------------------------------------------------------------
+
+% The header is divided into three boxes:
+% The first is 55% wide and houses the title, subtitle, names and university/organization
+% The second is 25% wide and houses contact information
+% The third is 19% wide and houses a logo for your university/organization or a photo of you
+% The widths of these boxes can be easily edited to accommodate your content as you see fit
+
+\begin{minipage}[b]{0.75\linewidth}
+\Huge \color{NavyBlue} 
+\textbf{Automated Facial Shape Analysis in Osteogenesis Imperfecta with
+Computer Vision}
+\color{Black}\\ % Title
+\Huge\textit{A Case-Control Study}\\[1cm] % Subtitle
+\Large \textbf{Maxime Rousseau DMD III \& Dr. Jean-Marc Retrouvey}\\ % Author(s)
+\Large Faculty of Dentistry, McGill Universtity\\ % University/organization
+\end{minipage}
+
+\begin{minipage}[b]{0.19\linewidth}
+  \vbox{\vspace{-50em}
+\hbox{
+	\hspace{80em}\includegraphics[width=8cm]{mcgill_logo.png}
+	\vspace{5em}
+} % Logo or a photo of you, adjust its dimensions here
+}
+\end{minipage}
+
+%----------------------------------------------------------------------------------------
+
+\begin{multicols}{2} % This is how many columns your poster will be broken into, a poster with many figures may benefit from less columns whereas a text-heavy poster benefits from more
+
+%----------------------------------------------------------------------------------------
+%	ABSTRACT
+%----------------------------------------------------------------------------------------
+
+\color{FireBrick}
+\begin{abstract}
+Osteogenesis Imperfecta subjects  present with typical craniofacial
+characteristics that have been described from a qualitative aspect in the
+literature\cite{rousseau2018osteogenesis}. 
+Such findings remain qualitative and are prone to personal biases.
+To obtain quantitative data of the craniofacial characteristics of OI patients,
+an automated facial annotation program and statistical shape analysis was used.
+Our sample consisted of three groups of patients affected by OI (type I, III
+and IV) as well as a control group. Statistically significant morphological discrepancies
+were found between control and OI subjects. Also some differences between types
+were observed.
+\end{abstract}
+
+%----------------------------------------------------------------------------------------
+%	INTRODUCTION
+%----------------------------------------------------------------------------------------
+
+\color{DarkBlue} 
+\section{Introduction}
+
+Osteogenesis Imperfecta is a rare genetic disease affecting mainly COL1A1/A2
+genes\cite{glorieux2012} resulting in the production of abnormal collagen
+type I in 90\% of cases. These alterations have several implications
+for the affected individuals four main types of OI have been described
+by Sillence\cite{sillence78} and are based on the phenotypes: Types I,
+II, III and IV. 
+The range of phenotype severity is very large.
+Most common are bone fragility, blue sclera, Dentinogenesis Imperfecta and short stature.
+Craniofacial alterations are common and malformations increase with severity of OI.
+There is no cure for OI but the use of Biphosphonates has decreased the amount of fractures
+and improved quality of life.
+
+%----------------------------------------------------------------------------------------
+%	Study Design
+%----------------------------------------------------------------------------------------
+
+\color{Black} 
+\section{Study Design}
+
+A case-control study was conducted on a total of 306 (M:145/F:161) patients. The Individuals
+affected by OI  where part of the BBDC 7701 study conducted at Shriners
+Hospital in Montreal, Canada. These patients were grouped according to their OI
+classification.  The first group consisted of 88 (42/46) OI type I subjects. A second
+group was composed of 28 (9/19) OI type III subjects. The third group consisted
+of 57 (26/31) OI type IV subjects. The control group consisted of 133 (68/65)
+patients (Figure 1). Population testing for sex (Chi-Squared) and age (ANOVA) showed no statistically significant difference between the groups (Table 1).
+
+
+\begin{minipage}{0.5\linewidth}
+  \centering
+\includegraphics[width=\linewidth]{population_boxplot.png}
+\captionof{figure}{\color{Green} Population samples of the study}
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+  \centering
+\includegraphics[width=\linewidth]{prcs_imgs.png}                                           
+        \captionof{figure}{\color{Green} Visualization of the processed image.                  
+          The green box represents the detected face and the red dots are the 68 landmarks}
+\end{minipage}
+      
+%----------------------------------------------------------------------------------------
+%	MATERIALS AND METHODS
+%----------------------------------------------------------------------------------------
+
+\section{Materials and Methods}
+
+Facial (anteroposterior) photographs of the patients faces for this analysis.
+These pictures where taken using a Canon D 70 Dental Eye by a single operator.
+Images were then automatically processed through face detection and
+annotation with 68 landmarks (Figure 2). The computational methodology used was published 
+in the form of a python package prior to the study \cite{rousseaupfla}. 
+
+%------------------------------------------------
+
+\section{Statistical Analysis}
+
+The R statistical programming language and the Shapes
+package\cite{dryden-shapes} were used to run the analysis.\\
+Mean shapes for each groups were computed using
+Generalized Procustre Analysis (GPA) which rotates and scales for optimal
+superimposition reducing error coming from different head positioning.
+This enables us to focus on the morphological features of the subjects.
+The mean shapes were then compared using Goodall's F-Test for statistical
+significance.
+Each patients' landmark distance was computed from its analogous landmark on
+the control mean shape using Eucledian geometry. We will refer to this
+measurement as mean Euclidian distance (MED).
+This method serves purpose of highlighting and locating the differences in
+morphology of the OI types.
+More traditionnal means of analysis were also used to compare the groups.
+Three different facial ratios  were also computed in addition to lower face height (LFH).
+Z-score were calculated for each measurement except for the mean shapes.
+
+\setlength{\belowdisplayskip}{0pt} \setlength{\belowdisplayshortskip}{0pt}
+\setlength{\abovedisplayskip}{0pt} \setlength{\abovedisplayshortskip}{0pt}
+
+\begin{center}
+  \begin{enumerate}[(a)]
+\item \[MED=\dfrac{\sum_{n=1}^{68} \sqrt{(b_i^x-l_i^x)^2+(b_i^y-l_i^y)^2}}{68}\]
+\item \[R_1=(l_{46}-l_{37})/(l_{17}-l_1)\]
+\item \[R_2=(l_{13}-l_5)/(l_{17}-l_1)\]
+\item \[R_3=(l_{17}-l_1)/(l_{28}-l_9)\]
+\item \[LFH=(l_{34}-l_{9})/(l_{28}-l_{9})\]
+\end{enumerate}
+\captionof{figure}{\color{Green} Equations of the measurements taken from the samples for our statistical analysis}
+\end{center}
+
+The measurements were tested using ANOVA analysis and post-hoc tests were done
+with the Bonferonni correction.
+
+
+%----------------------------------------------------------------------------------------
+%	RESULTS 
+%----------------------------------------------------------------------------------------
+
+\section{Results} 
+Intergroup comparisons of mean shapes using Goodall's F-Test showed statistically significant differences for all groups except between types I and IV.
+Results of statistical tests of the measurements are resumed in table 1.\\
+
+\begin{tabular}{|c||c|c|c|c|c|}
+\hline
+ & Control & OI Type I & OI Type III & OI Type IV & P-Value\\
+\hline
+\hline
+	N (M/F) & $133 (68/65)$ & $88 (42/46)$ & $28 (9/19)$ & $57 (26/31)$ &
+	P(Chi-Squared) = $0.32$\\
+	Age (years) & $17.7 (7.7)$ & $19.7 (14)$ & $15.4 (8.4)$ & $17.1 (8.4)$ & P(ANOVA) =
+	$0.19$\\
+	MED & $NA$ & $0.0075^{bc} (0.005)$ & $0.0106^{c} (0.008)$ & $0.0081 (0.006)$ &
+	P(ANOVA)  $<0.05$\\
+	MED Z-Score & $NA$ & $-0.122^{bc} (0.907)$ & $0.439^{c} (1.156)$ & $-0.027
+	(0.995)$ & P(ANOVA) $<0.05$\\
+	Ratio 1 & $0.612^{a} (0.026)$ & $0.595 (0.026)$ & $0.604 (0.036)$ & $0.602
+	(0.031)$ & P(ANOVA) $<0.05$\\
+	Ratio 1 Z-Score & $0.246^{a} (0.901)$ & $-0.323 (0.926)$ & $0.008 (1.242)$ &
+	$-0.080 (1.069)$ & P(ANOVA) $<0.05$\\
+	Ratio 2 & $0.799^{a} (0.027)$ & $0.784 (0.038)$ & $0.774 (0.030)$ & $0.791
+	(0.031)$ & P(ANOVA) $<0.05$\\
+	Ratio 2 Z-Score & $0.247^{a} (0.839)$ & $-0.215 (1.175)$ & $-0.537 (0.912)$ &
+	$0.021 (0.944)$ & P(ANOVA) $<0.05$\\
+	Ratio 3 & $1.26^{abc} (0.075)$ & $1.33^{b} (0.106)$ & $1.40^{c} (0.124)$ &
+	$1.33 (0.097)$ & P(ANOVA) $<0.05$\\
+	Ratio 3 Z-Score & $-0.444^{abc} (0.726)$ & $0.264^{b} (1.02)$ & $0.909^{c}
+	(1.191)$ & $0.181 (0.938)$ & P(ANOVA) $<0.05$\\
+	LFH & $0.569 (0.022)$ & $0.571 (0.027)$ & $0.562 (0.035)$ & $0.567 (0.026)$ &
+	P(ANOVA) = $0.47$ \\
+	LFH Z-Score & $0.0185 (0.871)$ & $0.0818 (1.02)$ & $-0.253 (1.407)$ &
+	$-0.045 (1.021)$ & P(ANOVA) = $0.47$\\
+\hline
+\end{tabular}
+\captionof{table}{\color{Green}Results from the measurements and statistical
+testing. a: $p<0.05$ in comparison to OI-I b: $p<0.05$ in comparison to OI-III
+c: $p<0.05$ in comparison to OI-IV}
+
+\section{Discussion}
+
+The following histogram (Figure 4) illustrates the mean Euclidean distances of the
+landmarks of each type when compared to the mean control shape.
+For all three groups, the spikes are
+consistent and point towards shape discrepancies at the level of the eyes and
+temples. Such findings hint at a possible growth issue causing this recurring pattern in
+patients affected by OI.\\                     
+
+\includegraphics[width=\linewidth]{histo.png}\captionof{figure}
+{\color{Green} Summary of the mean Euclidian Distances from baseline shape per landmark}
+
+The peaks in landmark distance from baseline for the type III group occur
+around points 1, 17, 27, and 46. These landmarks represent the lateral edges of
+the left eye and eye and the lateral edges of both the right and left temples.
+This pattern is present to a lesser extent in type I and IV patients. 
+This is consistent with the qualitative claims of triangular face
+previously reported in the literature. Facial ratios where also computed to support
+this novel methodology.\\
+The results from the different facial ratios also support this hypothesis.
+Every measurement taking into account the bitemporal width has a statistically significant ANOVA p-value.
+The results of the LFH measurements however point out that the vertical aspect of the face
+is not affected in OI patient from a morphological point of view.\\
+
+
+\color{SaddleBrown} % SaddleBrown color for the conclusions to make them stand out
+\section{Conclusions}
+Reports from the literature of specific facial characteristics such as
+triangular face in patients affected by OI are confirmed by our quantitative
+analysis.  It further suggests that these manifestations are present  increase
+in  severity depending on the type and that  type III group is  more severely
+affected.\\
+The findings of this study seem to indicate potential issues in the
+phenotypical classification initially put forth by Sillence regarding
+craniofacial manifestations. The strong similarities between the facial shapes
+of type I and type IV patients challenge our current understanding of the
+facial manifestations of the disease. Discerning one from the other in terms
+facial characteristics may be harder than previously thought.
+
+\color{DarkSlateGray} % Set the color back to DarkSlateGray for the rest of the content
+
+%----------------------------------------------------------------------------------------
+%	FORTHCOMING RESEARCH
+%----------------------------------------------------------------------------------------
+
+\section{Forthcoming Research}
+Our findings gave us new insight as to where to look for discrepancies with
+normal patients when it comes to the facial characteristics of patients affected
+by Osteogenesis Imperfecta. The next step will be to attempt to create a classifier from
+this data to assist us in our diagnosis of the patient. We would also want to extend our analysis to
+more dimension (profile, asymmetry, etc.)
+
+%----------------------------------------------------------------------------------------
+%	REFERENCES
+%----------------------------------------------------------------------------------------
+
+%\nocite{*} % Print all references regardless of whether they were cited in the poster or not
+\small
+\printbibliography
+
+%----------------------------------------------------------------------------------------
+%	ACKNOWLEDGEMENTS
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+
+\end{multicols}
+\end{document}
