@@ -135,11 +135,6 @@ bind_to_patient <- function(inpt_db, ldmk_cols){
 
 ldmk_col_names <- colnames(ldmk_data)
 full_db <- bind_to_patient(raw_data, ldmk_col_names)
-
-
-
-
-
 head(full_db)
 
 # create a function to create matrices
@@ -168,11 +163,11 @@ oi3_mat <- make_matrix('3')
 oi4_mat <- make_matrix('4')
 ctl_mat <- make_matrix('c')
 
-
 oi1_gpa <- procGPA(oi1_mat, eigen2d=TRUE)
 oi3_gpa <- procGPA(oi3_mat, eigen2d=TRUE)
 oi4_gpa <- procGPA(oi4_mat, eigen2d=TRUE)
 ctl_gpa <- procGPA(ctl_mat, eigen2d=TRUE)
+
 list_grp_mat <- list(oi1_mat, oi3_mat, oi4_mat)
 
 str(ctl_gpa$rotated)
@@ -264,24 +259,24 @@ ed_df <- cbind(ed_df, zscore)
 head(ed_df)
 
 compute_ratio <- function(inpt_mat, pt1, pt2, pt3, pt4){
-    
-    
+
+
     # first we gather our coordinates
     X1 <- inpt_mat[pt1,1,]
     X2 <- inpt_mat[pt2,1,]
     X3 <- inpt_mat[pt3,1,]
     X4 <- inpt_mat[pt4,1,]
-    
+
     Y1 <- inpt_mat[pt1,2,]
     Y2 <- inpt_mat[pt2,2,]
     Y3 <- inpt_mat[pt3,2,]
     Y4 <- inpt_mat[pt4,2,]
-    
+
     # we compute the ratio
     ed12 <- sqrt((X2 - X1)**2 + (Y2-Y1)**2)
     ed34 <- sqrt((X3 - X4)**2 + (Y3-Y4)**2)
     ratio_vec <- ed12 / ed34
-    
+
     return(ratio_vec)
 }
 
