@@ -1,6 +1,6 @@
 #' Computation and plotting of the landmark distances
 #' 
-#' - Shape alignment (shapes)
+#' - Shape alignment (shapes) (intra group subjects -> inter group mean shapes)
 #' - Compute the landmark distances
 #' - Group landmarks
 #' - Semantic distance plot
@@ -14,23 +14,15 @@ library(dplyr)
 library(purrr)
 library(stringr)
 library(shapes)
+library(rstatix)
  
-# NOTE: when writing about the improved methodology, it is important to
-# explain that the testing and interpretation are done separately, we use
-# the Goodall test to determine if the mean shapes are different, then we
-# use the landmark distance calculations and from baseline to compare to the
-# control group and interpret.
-#
-# We use the semantic method instead of the superimposition of the shapes
-# because it is much simpler/clearer to interpret
-
 distances <- function()
 {
     # load data
     ldmk_db <- read_tbl()
 
 	# LANDMARK DISTANCE  ----------------------------------------
-    # generalized procuste analysis
+    # generalized procuste analysis 1 (intra group: subjects)
     df_c <- proc(group_matrix(ldmk_db, "c"))
     df_1 <- proc(group_matrix(ldmk_db, "1"))
     df_3 <- proc(group_matrix(ldmk_db, "3"))
@@ -41,6 +33,13 @@ distances <- function()
 	ms_1 <- mshape(group_matrix(ldmk_db, "1"))
 	ms_3 <- mshape(group_matrix(ldmk_db, "3"))
 	ms_4 <- mshape(group_matrix(ldmk_db, "4"))
+
+    # generalized procuste analysis 2 (inter group: subjects)
+    all_ms <- proc(simplify2array(list(baseline, ms_1, ms_3, ms_4)))
+    baseline <- all_ms[,,1]
+    ms_1 <- all_ms[,,2]
+    ms_3 <- all_ms[,,3]
+    ms_4 <- all_ms[,,4]
 
     # compute distances
     dist_1 <- dist(baseline, ms_1)
