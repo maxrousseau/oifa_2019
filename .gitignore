@@ -1,5 +1,6 @@
 *.rds
 *.rda
+*.mat
 *.csv
 *.tiff
 .Rhistory
